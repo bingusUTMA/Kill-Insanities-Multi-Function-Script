@@ -23,7 +23,7 @@ end)
 local task2 = coroutine.create(function()
     while _G.autoKill == true and task.wait(0.1) do
         for i,h in workspace:GetDescendants() do
-            if h:IsA("Humanoid") and h.Parent.Name ~= game.Players.LocalPlayer.Name and h.Parent.Name ~= "InsanityDuoThingSans" then
+            if h:IsA("Humanoid") and h.Parent.Name ~= game.Players.LocalPlayer.Name then
                 h.Health = 0
             end
         end
