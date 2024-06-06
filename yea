@@ -1,0 +1,34 @@
+local attacks = {
+    "Hmogbones",
+    "insanitybonesp1",
+    "MapAttack1",
+    "Bone Throw",
+    "RoseSwords",
+    "BigRoseSwords",
+    "RoseTp",
+    "RoseExplosion",
+    "treeslol"
+}
+
+local task1 = coroutine.create(function()
+    while _G.deleteAttacks == true and task.wait(0.1) do
+        for i,p in workspace:GetChildren() do
+            if table.find(attacks, p.Name) then
+                p:Destroy()
+            end
+        end
+    end
+end)
+
+local task2 = coroutine.create(function()
+    while _G.autoKill == true and task.wait(0.1) do
+        for i,h in workspace:GetDescendants() do
+            if h:IsA("Humanoid") and h.Parent.Name ~= game.Players.LocalPlayer.Name and h.Parent.Name ~= "InsanityDuoThingSans" then
+                h.Health = 0
+            end
+        end
+    end
+end)
+
+coroutine.resume(task1)
+coroutine.resume(task2)
